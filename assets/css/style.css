@@ -1,0 +1,45 @@
+body {
+    background-size: cover;
+}
+.gameArea {
+    position: relative;
+    text-align: center;
+    background-color: cyan;
+    width: 1000px;
+    height: 890px;
+    top: 10px;
+    left: 260px;
+    border: solid rgb(40, 107, 151) 5px;
+}
+h1{
+    padding-top: 50px;
+    font-size: 100px;
+}
+h2 {
+    padding: 10px;
+    font-size:20px;
+}
+.timeRemaining {
+    font-size: 25px;
+    padding: 20px;
+}   
+.question {
+    font-size: 40px;
+    padding: 20px;
+}
+.answer {
+    padding: 20px;
+    width: 150px;
+    margin: 0 auto;
+}
+.answerList {
+    list-style: none;
+    font-weight: bold;
+    font-size: 25px;
+    padding: 20px;
+    
+}
+.correctAnswer {
+    font-size: 25px;
+    padding: 20px;
+}
