@@ -48,10 +48,11 @@ $('h2').on('click', function() {
 
 
 // create a timer set maxTime to 20
-var maxTime = 5;
+var maxTime = 10;
 var intervalId;
 
 function startTime() {
+    $('.timeRemaining').append('Time Remaining: ' + timer)
     clearInterval(intervalId);
     intervalId=setInterval(decrement, 1000);
 }
@@ -61,9 +62,10 @@ function decrement () {
     maxTime--;
     if (maxTime === -1) {
         timeOut();
-        maxTime=5;
+        maxTime=10;
     }
 }
+var unanswered=0;
 // if timer runs out run time out function
 function timeOut() {
     $('.correctAnswer').show();//show the correctAnswer
@@ -74,8 +76,11 @@ function timeOut() {
     $('.question, #answer1, #answer3, #answer4, #answer2').empty();
     clearInterval(intervalId);
     setTimeout(nextQuestion, 2000);
-  
-    
+    unanswered++;
+}
+
+function resetTimer() {
+    maxTime=10;
 }
 //make a function that can move the game to the next question
 var questionIndex=1;
@@ -89,26 +94,33 @@ function nextQuestion() {
     writeQuestion(questions[questionIndex]);
     questionIndex++;
 };
-var correctAnswers =[  
+var correctAnswers = [  
     questions[0].answers[0],
     questions[1].answers[1],
     questions[2].answers[3],
     questions[3].answers[2],
     questions[4].answers[1],
     questions[5].answers[0]
-] 
+] //figure out how to recognize a member of this array
+console.log(correctAnswers)
 var correct=0;
 var wrong=0;
 //define the correct answers
 $(".answer").on('click', function() {
     console.log('hi');
-    if(on.value= correctAnswers.length) {
+   console.log(this)
+    if(correctAnswers.indexOf($(this).val()) > 0) {
+        
         correct++;
         $('.answerImage').show();//show the gif
         $('.answerImage').append('<img src="assets/images/correct_answer.gif" alt="no more time" width="300px: height="300"/>');
-        stop()
-        nextQuestion();
+        console.log()
+        setTimeout(nextQuestion, 2000);
+    }else {
+        wrong++;
+        console.log('wrong')
     }
+    
 });
 //set correct answer and wrong answer total to zero
 // var correct=0;
