@@ -1,19 +1,20 @@
 body {
     background-size: cover;
 }
-.gameArea {
+.gameArea { 
+    color: rgb(185, 6, 6);
     position: relative;
     text-align: center;
-    background-color: cyan;
-    width: 1000px;
-    height: 690px;
-    top: 10px;
-    left: 260px;
-    border: solid rgb(40, 107, 151) 5px;
+    background-color:rgb(0, 0, 0);
+    width: 800px;
+    height: 650px;
+    top: 30px;
+    left: 360px;
+    border: solid rgb(185, 6, 6) 5px;
 }
 h1{
-    padding-top: 50px;
-    font-size: 100px;
+    padding-top: 20px;
+    
 }
 h2 {
     padding: 10px;
@@ -21,14 +22,14 @@ h2 {
 }
 .timeRemaining {
     font-size: 25px;
-    padding: 20px;
+    padding: 10px;
 }   
 .question {
     font-size: 40px;
-    padding: 20px;
+    padding: 10px;
 }
 .answer {
-    padding: 20px;
+    padding: 10px;
     width: 150px;
     margin: 0 auto;
 }
@@ -36,12 +37,12 @@ h2 {
     list-style: none;
     font-weight: bold;
     font-size: 25px;
-    padding: 20px;
+    padding: 10px;
     
 }
 .correctAnswer {
     font-size: 25px;
-    padding: 20px;
+    padding: 10px;
 }
 
 .resultsScene {
@@ -51,4 +52,8 @@ h2 {
 
 .correct, .wrong, .unanswered {
     padding: 20px;
+}
+
+audio {
+    padding-top: 20px;
 }

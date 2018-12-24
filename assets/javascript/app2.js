@@ -1,7 +1,7 @@
 var correct = 0;
 var wrong=0;
 var unanswered=0;
-var timer=10;
+var timer=5;
 var questionIndex = 0;
 var answerIndex=0;
 var userAns = [];
@@ -10,62 +10,85 @@ var questions = [
     {
         // make a question property and an array of the answers
         class: 'question1',
-        question: 'Who is the main character of The Witcher III?',
-        answers: ['Geralt of Rivia', 'Kratos', 'Nathan Drake', 'Super Mario'],
+        question: 'In what year was Stranger Things set in?',
+        answers: ['1983', '1979', '1989', '1995'],
         correctAnswer: 0
     },
     {
         class: 'question2',
-        question:'What is the NFL record for most passing touchdowns in a season?',
-        answers: ['49','55','50','63'],
+        question:'Who went missing at the beginning of season 1?',
+        answers: ['Eleven','Will Byers','Mike Wheeler','Barbara Holland'],
         correctAnswer: 1
     },
     {
         class: 'question3',
-        question:'What is the name of the regional manager of Dunder Mifflin (Scranton Branch)?',
-        answers: ['Dwight Schrute','Leslie Knope','Jim Halper','Michael Scott'],
+        question:'What is the name of the actress who plays Eleven?',
+        answers: ['Dakota Fanning','Bailee Madison','Veronika Bonell','Millie Bobby Brown'],
         correctAnswer: 3
     },
    {
         class: 'question4',
-        question:'In what year did America gain its independence from Great Britain?',
-        answers: ['1590','1886','1776','1973'],
+        question:'What is the name of the monster that haunts the children in season 1?',
+        answers: ['The Boogeyman','Whitewalker','Demigorgon','Loch Ness Monster'],
         correctAnswer: 2
     },
     {
         class: 'question5',
-        question:'What are the components of water?',
-        answers: ['CO2','H20','02','H2SO4'],
+        question:'How many episodes are there in season 1?',
+        answers: ['10','8','20','12'],
         correctAnswer: 1
     },
 
    {
         class: 'question6',
-        question: 'What is the square root of 20,736?...cubed',
-        answers: ['2,985,984','144','20,736','429,981,696'],
+        question: 'What movie did Finn Wolfhard star in after filming Stranger Things?',
+        answers: ['It','Venom','Solo: A Star Wars Story','The Shape of Water'],
         correctAnswer: 0
+    },
+    {
+        class: 'question7',
+        question: 'How old were Mike, Lucas, Dustin, Will, and Eleven?',
+        answers: ['10','14','12','11'],
+        correctAnswer: 2
+    },
+    {
+        class: 'question8',
+        question: 'Will went missing. Where did he go??',
+        answers: ['Never Never Land','The Sewers','Narnia','The Upside Down'],
+        correctAnswer: 3
+    },
+    {
+        class: 'question9',
+        question: 'When a truck was coming toward the kids, what did Eleven do to it?',
+        answers: ['Flipped it over them','Made it explode','Punched it','Stared at it menacingly'],
+        correctAnswer: 0
+    },
+    {
+        class: 'question10',
+        question: 'What did Joyce use to contact Will while he was in the Upside Down?',
+        answers: ['Two cups and a string','Christmas lights','A morse-code-style knocking system','Yelled really loud'],
+        correctAnswer: 1
     }
+    
 ]
-
+//make restartGame function
 function restartGame() {
     document.location.reload();
 }
-
+//if questionIndex equals 10
+//run the resultPage function
+//reveal a restart button
 $('resultsScene').hide();
 function detectEndGame() {
     currentQuestion = questions[questionIndex];
-    if (currentQuestion.class === 'question6') {
+    if (currentQuestion.class === 'question10') {
         resultsPage();
         $('button').on('click', function() {
             restartGame();
         })
         return;
     }
-    else {
-        
-    }
-    
-    console.log(currentQuestion.class);
+    else {}
 }
 
 //get started click function
@@ -106,7 +129,7 @@ function decrement () {
     timer--;//decrement timer down by 1
     if (timer === -1) {// if timer runs out
         timeOut();//run timeout function
-        timer=10; //reset timer to 10
+        timer=5; //reset timer to 10
     }
 }
 //make timeout function that sends a time out message and image after the timer hits zero
@@ -115,14 +138,14 @@ function timeOut() {
     $('.correctAnswer').show();//show the correctAnswer
     $('.answerImage').show();//show the gif
     $('.correctAnswer').append('<p>' + 'OUT OF TIME!' + '</p>')//write text to screen
-    $('.answerImage').append('<img src="assets/images/out_of_time.gif" alt="no more time" width="300px: height="300"/>'); //write image to screen
+    $('.answerImage').append('<img src="assets/images/outOfTime.gif" alt="no more time" width="500px: height="500"/>'); //write image to screen
     clearInterval(intervalId); //clear interval previously set so that it doesnt stack
-    setTimeout(nextQuestion, 1500); //run next question function after 2 seconds
+    setTimeout(nextQuestion, 4000); //run next question function after 2 seconds
     unanswered++;//increase unanswered question stats by 1
     // console.log(unanswered);
 }
 function resetTimer() {
-    timer=10;
+    timer=5;
     startTime();
 }
 //make a function that will write the next question to the page
@@ -159,8 +182,8 @@ function correctAnswerDetector() {
         $('.correctAnswer').show();//show the correctAnswer
         $('.answerImage').show();//show the gif
         $('.correctAnswer').append(answerText);
-        $('.answerImage').append('<img src="assets/images/correct_answer.gif" alt="no more time" width="300px: height="300"/>')
-        setTimeout(nextQuestion, 1500);//setTImeout for nextQuestion function to 1.5 seconds
+        $('.answerImage').append('<img src="assets/images/corretAnswer.gif" alt="no more time" width="500px: height="500"/>')
+        setTimeout(nextQuestion, 2000);//setTImeout for nextQuestion function to 1.5 seconds
         clearInterval(intervalId); //clear interval previously set so that it doesnt stack
         correct++;//increase correct var by 1
     }
@@ -171,19 +194,21 @@ function correctAnswerDetector() {
         $('.answerImage').show();//show the gif
         //append correct answer and gif!
         $('.correctAnswer').append("Correct Answer: " + currentQuestion.answers[currentQuestion.correctAnswer]);
-        $('.answerImage').append('<img src="assets/images/wrong_answer.gif" alt="no more time" width="300px: height="300"/>')
-        setTimeout(nextQuestion, 1500);//setTImeout for nextQuestion function to 1.5 seconds
+        $('.answerImage').append('<img src="assets/images/wrongAnswer.gif" alt="no more time" width="500px: height="500"/>')
+        setTimeout(nextQuestion, 2000);//setTImeout for nextQuestion function to 1.5 seconds
         clearInterval(intervalId); //clear interval previously set so that it doesnt stack
         wrong++;//increase wrong var by 1
     }
 }
 
-
+//make resultPage function
 function resultsPage() {
+    //hide the components of the original page
     $('.questionScene').hide();
     $('.correctAnswer').hide();
     $('.answerImage').hide();
     $('.timeRemaining').hide();
+    //make divs for your correct,wrong, and unanswered stats and the restart button and append them to the page after adding a class to them
     var correctAnswerDiv = $('<div>');
     correctAnswerDiv.addClass('correct');
     correctAnswerDiv.text('Total Correct: ' + correct);
@@ -200,16 +225,13 @@ function resultsPage() {
     restartButton.addClass('restart');
     restartButton.text('RESTART');
     $('.resultsScene').append(restartButton);
-    $('.resultsScene').show();
+    $('.resultsScene').show();//show the resultsScene which holds all of the dynamically created divs, because it was hidden to start the game
 }
 
 
 
 
-//if questionIndex equals 5
-//run the resultPage function
-//reveal a restart button
 
-//make resultPage function
 
-//make restartGame function
+
+
